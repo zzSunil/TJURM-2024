@@ -4,8 +4,9 @@
 #include <openrm/cudatools.h>
 
 using namespace rm;
-using namespace nvinfer1;
-using namespace nvonnxparser;
+			//FIXME
+//using namespace nvinfer1;
+//using namespace nvonnxparser;
 
 void Pipeline::preprocessor_rune_thread(
     std::mutex& mutex_out, bool& flag_out, std::shared_ptr<rm::Frame>& frame_out
@@ -22,9 +23,10 @@ void Pipeline::preprocessor_rune_thread(
     int bboxes_num   = (*param)["Model"]["YoloRune"]["BboxesNum"];
 
     if (access(engine_file.c_str(), F_OK) == 0) {
-        if (!rm::initTrtEngine(engine_file, &rune_context_)) exit(-1);
+			//FIXME
+        //if (!rm::initTrtEngine(engine_file, &rune_context_)) exit(-1);
     } else if (access(onnx_file.c_str(), F_OK) == 0){
-        if (!rm::initTrtOnnx(onnx_file, engine_file, &rune_context_, 1U)) exit(-1);
+        //if (!rm::initTrtOnnx(onnx_file, engine_file, &rune_context_, 1U)) exit(-1);
     } else {
         rm::message("No model file found!", rm::MSG_ERROR);
         exit(-1);
@@ -69,21 +71,23 @@ void Pipeline::preprocessor_rune_thread(
             camera->rgb_device_buffer,
             frame->width,
             frame->height);
-        resize(
-            camera->rgb_device_buffer,
-            frame->width,
-            frame->height,
-            rune_input_device_buffer_,
-            infer_width,
-            infer_height,
-            (void*)resize_stream_
-        );
-        detectEnqueue(
-            rune_input_device_buffer_,
-            rune_output_device_buffer_,
-            &rune_context_,
-            &detect_stream_
-        );
+				//FIXME:
+        //resize(
+        //    camera->rgb_device_buffer,
+        //    frame->width,
+        //    frame->height,
+        //    rune_input_device_buffer_,
+        //    infer_width,
+        //    infer_height,
+        //    (void*)resize_stream_
+        //);
+				//FIXME:
+        //detectEnqueue(
+        //    rune_input_device_buffer_,
+        //    rune_output_device_buffer_,
+        //    &rune_context_,
+        //    &detect_stream_
+        //);
 
         if (Data::record_mode) { record(frame); }
 

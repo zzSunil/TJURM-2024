@@ -113,10 +113,11 @@ private:
     bool imshow_in_ = false;
     bool record_in_ = false;
 
-    cudaStream_t resize_stream_;
-    cudaStream_t detect_stream_;
-    nvinfer1::IExecutionContext* armor_context_;
-    nvinfer1::IExecutionContext* rune_context_;
+		// FIXME:
+    //cudaStream_t resize_stream_;
+    //cudaStream_t detect_stream_;
+    //nvinfer1::IExecutionContext* armor_context_;
+    //nvinfer1::IExecutionContext* rune_context_;
 
     float* armor_input_device_buffer_ = nullptr;
     float* armor_output_device_buffer_ = nullptr;

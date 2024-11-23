@@ -3,8 +3,9 @@
 #include <iostream>
 #include <openrm/cudatools.h>
 using namespace rm;
-using namespace nvinfer1;
-using namespace nvonnxparser;
+//FIXME:
+//using namespace nvinfer1;
+//using namespace nvonnxparser;
 
 void Pipeline::detector_rune_thread(
     std::mutex& mutex_in, bool& flag_in, std::shared_ptr<rm::Frame>& frame_in, 
@@ -47,13 +48,14 @@ void Pipeline::detector_rune_thread(
 
         tp1 = getTime();
 
-        detectOutput(
-            rune_output_host_buffer_,
-            rune_output_device_buffer_,
-            &detect_stream_,
-            yolo_struct_size,
-            bboxes_num
-        );
+				//FIXME:
+        //detectOutput(
+        //    rune_output_host_buffer_,
+        //    rune_output_device_buffer_,
+        //    &detect_stream_,
+        //    yolo_struct_size,
+        //    bboxes_num
+        //);
         frame->yolo_list = yoloArmorNMS_FP(
             rune_output_host_buffer_,
             bboxes_num,

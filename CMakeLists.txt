@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_BUILD_TYPE DEBUG)
 # add_compile_options(-g -O0 -w -fno-omit-frame-pointer -Wno-notes)
 add_compile_options(-g)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(CMAKE_BUILD_TYPE RELEASE)
 # add_compile_options(-O2)
 
@@ -17,8 +18,8 @@ add_definitions(-DTJURM_INFANTRY)
 # add_definitions(-DTJURM_DRONSE)
 
 # CUDA
-find_package(CUDA REQUIRED)
-include_directories(/usr/local/cuda/include)
+#find_package(CUDA REQUIRED)
+#include_directories(/usr/local/cuda/include)
 
 # OpenRM
 find_package(OpenRM REQUIRED)
